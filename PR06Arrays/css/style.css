@@ -1,0 +1,29 @@
+.equipos{
+    background-color: red;
+    color: rgb(77, 77, 77);
+    font-weight: bold;
+}
+td{
+   padding: 20px; 
+   text-align: center;
+}
+.nomb{
+    font-weight: bold;
+}
+.verde{
+
+    background-color: rgb(8, 200, 8);
+}
+.rojo{
+    background-color: red;
+}
+.amarillo{
+    background-color: yellow;
+}
+.naranja{
+    background-color: orange;
+}
+span{
+    padding: 10px;
+    text-align: center;
+}
