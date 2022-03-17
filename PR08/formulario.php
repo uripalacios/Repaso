@@ -62,20 +62,22 @@
         </label>
         <br>
         <label for="check">Elige al menos 1 y maximo 3:</label><br>
-            <input type="checkbox" name="check" id="check1" value="1">Check1
-            <input type="checkbox" name="check" id="check2" value="2">Check2
-            <input type="checkbox" name="check" id="check3" value="3">Check3
-            <input type="checkbox" name="check" id="check4" value="4">Check4
-            <input type="checkbox" name="check" id="check5" value="5">Check5
-            <input type="checkbox" name="check" id="check6" value="6">Check6
+            <input type="checkbox" name="check[]" id="check1" value="1" <?php rellenaCheck('1')?>>Check1
+            <input type="checkbox" name="check[]" id="check2" value="2" <?php rellenaCheck('2')?>>Check2
+            <input type="checkbox" name="check[]" id="check3" value="3" <?php rellenaCheck('3')?>>Check3
+            <input type="checkbox" name="check[]" id="check4" value="4" <?php rellenaCheck('4')?>>Check4
+            <input type="checkbox" name="check[]" id="check5" value="5" <?php rellenaCheck('5')?>>Check5
+            <input type="checkbox" name="check[]" id="check6" value="6" <?php rellenaCheck('6')?>>Check6
         <br>
         <br>
         <label for="tel">Nº Telefono
-            <input type="tel" name="tel" id="tel" placeholder="654987321">
+            <input type="tel" name="tel" id="tel" placeholder="654987321" value='<?php rellenaTel()?>'>
+            <?php incompleto('tel')?>
         </label>
         <br>
         <label for="email">Email
-            <input type="email" name="email" id="email">
+            <input type="email" name="email" id="email" value='<?php rellenaEmail()?>'>
+            <?php incompleto('email')?>
         </label>
         <br>
         <label for="pass">Contraseña

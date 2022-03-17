@@ -2,12 +2,15 @@
 
 function validaFormulario(&$arrayError){
     if(isset($_POST['Enviado'])){
-        echo "El formulario ha sido enviado";
         compruebaAlfabetico('alfabetico');
         compruebaAlfanumerico('alfanumerico');
         compruebaFecha('fecha');
         compruebaRadio('radio');
-        
+        compruebaCombo('seleccione');
+        compruebaCheck('check');
+        compruebaTel('tel');
+        compruebaEmail('email');
+        echo "El formulario ha sido enviado";
     }   
 }
 //alfabeticos
@@ -48,7 +51,7 @@ function compruebaRadio($id){
     }
 }
 function rellenaRadio($op){
-    if(($_POST['radio'])==$op)
+    if((!empty($_POST['radio']))&&($_POST['radio'])==$op)
         echo "checked";
 }
 function compruebaFecha($id){
@@ -74,9 +77,69 @@ function compruebaCombo($id){
     }
 }
 function rellenaCombo($op){
-    if(($_POST['seleccione'])==$op)
+    if((!empty($_POST['seleccione']))&&($_POST['seleccione'])==$op)
         echo "selected";
 }
+function compruebaCheck($id){
+    global $arrayError;
+    if(!empty($_POST['check'])&&(count($_POST['check'])>=1)&&(count($_POST['check'])<=3)){
+       return true; 
+    }else{
+        $arrayError[$id]="Solo puede elegir entre 1 y 3 opciones!!!";
+        return false; 
+    }
+}
+function rellenaCheck($op){
+    if((!empty($_POST['check']))){
+        foreach ($_POST['check'] as $key => $value) {
+            # code...
+            if($value==$op){
+                echo "checked";
+            }
+        }
+        //&&($_POST['check[]'])==$op)
+    }
+}
+function compruebaTel($id){
+    global $arrayError;
+    if(!empty($_POST['tel']) && preg_match('/^[0-9]{9}$/',$_POST['tel'])){
+        return true;
+    }else{
+        $arrayError[$id]="No puede estar vacio o tiene que tener al menos 9 digitos!!!";
+        return false; 
+    }
+}
+function rellenaTel(){
+    if(!empty($_POST['tel']) && preg_match('/^[0-9]{9}$/',$_POST['tel']))
+    echo $_POST['tel'];
+}
+function compruebaEmail($id){
+    global $arrayError;
+    if(!empty($_POST['email']) && preg_match('/^[A-Za-z0-9_\-.]{1,}@[A-Za-z0-9]{1,}.\D{1,}$/',$_POST['email'])){
+        return true;
+    }else{
+        $arrayError[$id]="El formato no es el correcto!!!";
+        return false; 
+    }
+}
+function rellenaEmail(){
+    if(!empty($_POST['email']) && preg_match('/^[A-Za-z0-9_\-.]{1,}@[A-Za-z0-9]{1,}.\D{1,}$/',$_POST['email']))
+    echo $_POST['email'];
+}
+function compruebaPass($id){
+    global $arrayError;
+    if(!empty($_POST['pass']) && preg_match('//',$_POST['pass'])){
+        return true;
+    }else{
+        $arrayError[$id]="La contraseña debe tener al menos 1 minuscula, 1 mayuscula y 1 numero con una longitud superior a 8!!!";
+        return false; 
+    }
+}
+function rellenaPass(){
+    if(!empty($_POST['pass']) && preg_match('/[a-z]{1,}/',$_POST['pass'])&& preg_match('/[A-Z]{1,}/',$_POST['pass'])&& preg_match('/\d{1,}/',$_POST['pass']) && )
+    echo $_POST['pass'];
+}
+
 function incompleto($id){
     global $arrayError;
     if(isset($arrayError[$id])){
