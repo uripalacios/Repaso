@@ -1,7 +1,8 @@
 <?php
 
-function validaFormulario(&$arrayError){
+function validaFormulario(){
     if(isset($_POST['Enviado'])){
+        //LLamada a todos los comprueba para mensaje de error
         compruebaAlfabetico('alfabetico');
         compruebaAlfanumerico('alfanumerico');
         compruebaFecha('fecha');
@@ -10,10 +11,22 @@ function validaFormulario(&$arrayError){
         compruebaCheck('check');
         compruebaTel('tel');
         compruebaEmail('email');
-        echo "El formulario ha sido enviado";
+        compruebaPass('pass');
+        compruebaDoc('doc');
+        
+        //
+        if(compruebaAlfabetico('alfabetico')&&compruebaAlfanumerico('alfanumerico')&&compruebaFecha('fecha')
+        &&compruebaRadio('radio')&&compruebaCombo('seleccione')&&compruebaCheck('check')&&compruebaTel('tel')
+        &&compruebaEmail('email')&&compruebaPass('pass')&&compruebaDoc('doc')){
+            echo "<h2>El formulario ha sido enviado correctamente!!!</h2>";
+            return true;
+        }else{
+            return false;
+        }
+            
     }   
 }
-//alfabeticos
+//Comprueba alfabeticos y si no hay los manda al array error
 function compruebaAlfabetico($id){
     global $arrayError;
     if(!empty($_POST['alfabetico'])){
@@ -90,14 +103,19 @@ function compruebaCheck($id){
     }
 }
 function rellenaCheck($op){
-    if((!empty($_POST['check']))){
+    if((!empty($_POST['check']))&&(count($_POST['check'])>=1)&&(count($_POST['check'])<=3)){
+        /*
         foreach ($_POST['check'] as $key => $value) {
             # code...
             if($value==$op){
                 echo "checked";
             }
         }
-        //&&($_POST['check[]'])==$op)
+        */
+        //me devuelve si esta en el array la opcion para marcarla
+        if(in_array($op,$_POST['check'])){
+            echo "checked";
+        }
     }
 }
 function compruebaTel($id){
@@ -128,7 +146,7 @@ function rellenaEmail(){
 }
 function compruebaPass($id){
     global $arrayError;
-    if(!empty($_POST['pass']) && preg_match('//',$_POST['pass'])){
+    if(!empty($_POST['pass']) && preg_match('/[a-z]{1,}/',$_POST['pass'])&& preg_match('/[A-Z]{1,}/',$_POST['pass'])&& preg_match('/\d{1,}/',$_POST['pass']) && strlen($_POST['pass'])>=8){
         return true;
     }else{
         $arrayError[$id]="La contraseña debe tener al menos 1 minuscula, 1 mayuscula y 1 numero con una longitud superior a 8!!!";
@@ -136,8 +154,17 @@ function compruebaPass($id){
     }
 }
 function rellenaPass(){
-    if(!empty($_POST['pass']) && preg_match('/[a-z]{1,}/',$_POST['pass'])&& preg_match('/[A-Z]{1,}/',$_POST['pass'])&& preg_match('/\d{1,}/',$_POST['pass']) && )
+    if(!empty($_POST['pass']) && preg_match('/[a-z]{1,}/',$_POST['pass'])&& preg_match('/[A-Z]{1,}/',$_POST['pass'])&& preg_match('/\d{1,}/',$_POST['pass']) && strlen($_POST['pass'])>=8)
     echo $_POST['pass'];
+}
+function compruebaDoc($id){
+    global $arrayError;
+    if(!empty($_POST['doc'])){
+        return true;
+    }else{
+        $arrayError[$id]="Debe insertar un archivo!!!";
+        return false;
+    }
 }
 
 function incompleto($id){

@@ -14,8 +14,37 @@
     $arrayError=array();
     array_push($arrayError,"1");
     require "./codigo/ValidaForm.php";
-    if(validaFormulario($arrayError)){
-
+    if(validaFormulario()){
+        //nombre
+        echo "<p>El nombre es ".$_POST['alfabetico']."</p>";
+        //nombre Opcional
+        echo "<p>El nombre opcional es ".$_POST['alfabeticoOp']."</p>";
+        //apellido
+        echo "<p>El apellido es ".$_POST['alfanumerico']."</p>";
+        //apellido Opcional
+        echo "<p>El apellido opcinal es ".$_POST['alfanumericoOp']."</p>";
+        //fecha
+        echo "<p>La fecha introducida es ".$_POST['fecha']."</p>";
+        //fecha Opcional
+        echo "<p>La fecha opcinal introducida es ".$_POST['fechaOp']."</p>";
+        //radio
+        echo "<p>La opcion elegida es ".$_POST['radio']."</p>";
+        //combo
+        echo "<p>El combo elegido es ".$_POST['seleccione']."</p>";
+        //checks
+        echo "<p>Los checks elegidos son ";
+            foreach ($_POST['check'] as $key => $value) {
+                echo $value." ";
+            }
+        echo"</p>";
+        //telefono
+        echo "<p>El numero de telefono es ".$_POST['tel']."</p>";
+        //email
+        echo "<p>El correo es ".$_POST['email']."</p>";
+        //contraseña
+        echo "<p>La contraseña es ".$_POST['pass']."</p>";
+        //documento
+        echo "<p>El nombre del documento es ".$_POST['doc']."</p>";
     }else{
     ?>
     <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
@@ -59,6 +88,7 @@
                 <option value="2" <?php rellenaCombo('2')?>>Opcion2</option> 
                 <option value="3" <?php rellenaCombo('3')?>>Opcion3</option>
             </select>
+            <?php incompleto('seleccione')?>
         </label>
         <br>
         <label for="check">Elige al menos 1 y maximo 3:</label><br>
@@ -69,6 +99,7 @@
             <input type="checkbox" name="check[]" id="check5" value="5" <?php rellenaCheck('5')?>>Check5
             <input type="checkbox" name="check[]" id="check6" value="6" <?php rellenaCheck('6')?>>Check6
         <br>
+            <?php incompleto('check')?>
         <br>
         <label for="tel">Nº Telefono
             <input type="tel" name="tel" id="tel" placeholder="654987321" value='<?php rellenaTel()?>'>
@@ -81,11 +112,13 @@
         </label>
         <br>
         <label for="pass">Contraseña
-            <input type="password" name="pass" id="pass">
+            <input type="password" name="pass" id="pass" value='<?php rellenaPass()?>'>
+            <?php incompleto('pass')?>
         </label>
         <br>
         <label for="doc">Subir documento
             <input type="file" name="doc" id="doc">
+            <?php incompleto('doc')?>
         </label>
         <br>
         <input type="submit" name="Enviado" value="Enviar">
