@@ -12,21 +12,24 @@
     <?php
     
     $arrayError=array();
-    array_push($arrayError,"1");
+    //array_push($arrayError,"1");
     require "./codigo/ValidaForm.php";
     if(validaFormulario()){
         //nombre
         echo "<p>El nombre es ".$_POST['alfabetico']."</p>";
         //nombre Opcional
-        echo "<p>El nombre opcional es ".$_POST['alfabeticoOp']."</p>";
+        if(!empty($_POST['alfabeticoOp']))
+            echo "<p>El nombre opcional es ".$_POST['alfabeticoOp']."</p>";
         //apellido
         echo "<p>El apellido es ".$_POST['alfanumerico']."</p>";
         //apellido Opcional
-        echo "<p>El apellido opcinal es ".$_POST['alfanumericoOp']."</p>";
+        if(!empty($_POST['alfanumericoOp']))
+            echo "<p>El apellido opcinal es ".$_POST['alfanumericoOp']."</p>";
         //fecha
         echo "<p>La fecha introducida es ".$_POST['fecha']."</p>";
         //fecha Opcional
-        echo "<p>La fecha opcinal introducida es ".$_POST['fechaOp']."</p>";
+        if(!empty($_POST['fechaOp']))
+            echo "<p>La fecha opcinal introducida es ".$_POST['fechaOp']."</p>";
         //radio
         echo "<p>La opcion elegida es ".$_POST['radio']."</p>";
         //combo
