@@ -21,9 +21,9 @@
     }else{
     ?>
     <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-        <label for="nombre">Nombre del fichero: 
-            <input type="text" name="nombre" id="nombre" placeholder="Nombre Fichero">
-            <?php incompleto('nombre')?>
+        <label for="ficheros">Nombre del fichero: 
+            <input type="text" name="ficheros" id="ficheros" placeholder="Nombre Fichero">
+            <?php incompleto('ficheros')?>
         </label>
         <input type="submit" name="btn" value="Editar">
         <input type="submit" name="btn" value="Leer">

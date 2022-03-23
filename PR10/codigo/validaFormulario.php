@@ -2,10 +2,10 @@
 function validaFormulario(){
     if(isset($_POST['btn'])){
         //LLamada a todos los comprueba para mensaje de error
-        compruebaNombre('nombre');
+        compruebaNombre('ficheros');
         
         
-        if(compruebaNombre('nombre')){
+        if(compruebaNombre('ficheros')){
             return true;
         }else{
             return false;
@@ -26,8 +26,8 @@ function compruebaNombre($id){
 }
 //funcion para mantener el nombre ya validado
 function rellenaNombre(){
-    if(!empty($_POST['nombre']) && preg_match('/^\D{1,}$/',$_POST['nombre']))
-    echo $_POST['nombre'];
+    if(!empty($_POST['ficheros']) && preg_match('/^\D{1,}$/',$_POST['ficheros']))
+    echo $_POST['ficheros'];
 }
 
 //funcion para mostrar los mensajes de error

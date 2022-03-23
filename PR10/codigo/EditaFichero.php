@@ -20,7 +20,12 @@
     <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
         <label for="contenido">Contenido de Fichero: 
             <br> 
-            <textarea name="contenido" id="contenido" cols="30" rows="10" value="<?php fread(buscaFichero(),filesize($_GET['ficheros'])) ?>"></textarea>
+            <textarea name="contenido" id="contenido" cols="30" rows="10" value="<?php 
+            $f=buscaFichero();
+            if(filesize($_GET['ficheros'])>0)
+                fread($f,filesize($_GET['ficheros'])); 
+            
+            ?>"></textarea>
         </label>
         <br>
         <input type="submit" name="btn" value="Modificar">
