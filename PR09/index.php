@@ -15,6 +15,14 @@
     //array_push($arrayError,"1");
     require "./codigo/validaFormulario.php";
     if(validaFormulario()){
+        //nombre
+        echo "<p>El nombre es ".$_POST['nombre']."</p>";
+        //apellido
+        echo "<p>Los apellidos son ".$_POST['apellido']."</p>";
+        //fecha
+        echo "<p>La fecha es ".$_POST['fecha']."</p>";
+        //email
+        echo "<p>El email es ".$_POST['email']."</p>";
     }else{
         ?>
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">

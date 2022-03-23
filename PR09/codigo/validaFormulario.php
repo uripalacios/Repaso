@@ -120,7 +120,7 @@ function mayorEdad($id){
     $mesF = substr($_POST[$id],3,4);
     $diaF = substr($_POST[$id],0, 1);
     */
-    $fechaFor = explode($_POST[$id],'-');
+    $fechaFor = explode('-',$_POST[$id]);
 
     if(($anioA-$fechaFor[2])>18){
         return true;
