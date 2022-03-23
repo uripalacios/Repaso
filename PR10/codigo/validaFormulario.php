@@ -17,7 +17,7 @@ function validaFormulario(){
 //funcion que comprueba patron de nombre y no vacio
 function compruebaNombre($id){
     global $arrayError;
-    if(!empty($_POST[$id]) && preg_match('/^\D{3,}$/',$_POST[$id])){
+    if(!empty($_POST[$id]) && preg_match('/^\D{1,}$/',$_POST[$id])){
         return true;
     }else{
         $arrayError[$id]=" No puede estar vacío el nombre de fichero";
@@ -26,7 +26,7 @@ function compruebaNombre($id){
 }
 //funcion para mantener el nombre ya validado
 function rellenaNombre(){
-    if(!empty($_POST['nombre']) && preg_match('/^\D{3,}$/',$_POST['nombre']))
+    if(!empty($_POST['nombre']) && preg_match('/^\D{1,}$/',$_POST['nombre']))
     echo $_POST['nombre'];
 }
 

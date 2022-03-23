@@ -8,5 +8,9 @@ function compruebaBoton(){
         }
     }
 }
+function buscaFichero(){
+    fopen($_GET['ficheros'],'w+');
+}
+
 
 ?>
