@@ -4,7 +4,7 @@ function compruebaBoton(){
         if($_POST['btn']=="Editar"){
             header("Location: ./EditaFichero.php?ficheros=".$_REQUEST['ficheros']);
         }
-        elseif($_POST['btn']=="Leer"){
+        elseif($_POST['btn']=="Leer" && leeFichero()){
             
             header("Location: ./LeeFichero.php?ficheros=".$_REQUEST['ficheros']);
         }
@@ -15,7 +15,12 @@ function compruebaBoton(){
     }
 }
 function buscaFichero(){
-    $fp = fopen($_GET['ficheros'],'w+');
+    $fp = fopen($_REQUEST['ficheros'],'w+');
+    return $fp;
+}
+
+function leeFichero(){
+    $fp = fopen($_REQUEST['ficheros'],'r');
     return $fp;
 }
 
