@@ -5,13 +5,12 @@ function validaFormulario(){
         compruebaNombre('ficheros');
         
         
-        if(compruebaNombre('ficheros')){
+        if(compruebaNombre('ficheros') && compruebaBoton()){
             return true;
         }else{
             return false;
         }
-            
-    }   
+    } 
 }
 //NOMBRE
 //funcion que comprueba patron de nombre y no vacio
