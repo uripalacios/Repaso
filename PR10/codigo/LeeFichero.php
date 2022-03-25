@@ -32,5 +32,6 @@
         </label>
         <br>
         <input type="submit" name="btn" value="Editar">
+        <input type="submit" name="btn" value="Inicio">
     </form>
     <?php 

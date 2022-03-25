@@ -21,10 +21,10 @@
         <label for="contenido">Contenido de Fichero: 
             <br> 
             <input type="hidden" name="ficheros" value="<?php echo $_REQUEST['ficheros']?>">
-            <textarea name="contenido" id="contenido" cols="30" rows="10"> <?php 
-            $f=buscaFichero();
-            if(filesize($_REQUEST['ficheros'])>0){
-                $contenido = fread($f,filesize($_REQUEST['ficheros'])); 
+            <textarea name="contenido" id="contenido" cols="30" rows="10"><?php 
+            $f=leeFichero();
+            if(filesize($_GET['ficheros'])>0){
+                $contenido=fread($f,filesize($_GET['ficheros'])); 
                 echo $contenido;
                 fclose($f);
             }
@@ -32,5 +32,6 @@
         </label>
         <br>
         <input type="submit" name="btn" value="Modificar">
+        <input type="submit" name="btn" value="Inicio">
     </form>
     <?php 
