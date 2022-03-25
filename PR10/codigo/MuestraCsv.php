@@ -49,6 +49,18 @@
                         $cont++;
                     }
 
+                    for ($i=0; $i <count($porAlumno) ; $i++) { 
+                        # code...
+                        $separados = explode(";",$porAlumno[$i]);
+                        echo "<tr>";
+                        foreach ($separados as $value) {
+                            # code...
+                            echo "<td>".$value."</td>";
+                        }
+                        echo "<input type='hidden' name='contador' value=".$i.">";
+                        echo "<td><input type='submit' name='btn' value='Editar'></td>";
+                        echo "</tr>";
+                    }
                 ?>
             </tbody>
         </table>
