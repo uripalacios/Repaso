@@ -21,7 +21,7 @@
         <label for="contenido">Contenido de Fichero: 
             <br> 
             <input type="hidden" name="ficheros" value="<?php echo $_REQUEST['ficheros']?>">
-            <textarea name="contenido" id="contenido" cols="30" rows="10"> <?php 
+            <textarea name="contenido" id="contenido" cols="30" rows="10"><?php 
             $f=leeFichero();
             if(filesize($_GET['ficheros'])>0){
                 $contenido=fread($f,filesize($_GET['ficheros'])); 

@@ -22,8 +22,8 @@
             <br> 
             <input type="hidden" name="ficheros" value="<?php echo $_REQUEST['ficheros']?>">
             <textarea name="contenido" id="contenido" cols="30" rows="10"><?php 
-            $f=leeFichero();
-            if(filesize($_GET['ficheros'])>0){
+            if(existeFichero()){
+                $f=leeFichero();
                 $contenido=fread($f,filesize($_GET['ficheros'])); 
                 echo $contenido;
                 fclose($f);
