@@ -14,27 +14,21 @@ function recogeDatos(){
     // 3º - Cerrar el fichero //
     fclose($fp);
 }
-
 function modificaFichero(){
     global $porAlumno;
-    $newCont = array($_REQUEST['contador']=>$_POST['nombre'].";".$_POST['nt1'].";".$_POST['nt2'].";".$_POST['nt3']);
-    $porAlumno = array_replace($porAlumno,$newCont);
-    $contenido = implode("\n",$porAlumno);
+    $newCont = array($_POST['nombre'],$_POST['nt1'],$_POST['nt2'],$_POST['nt3']);
     //escritura en fichero
-    $rutaFichero= "notas.csv";
-    if(!$fp = fopen($rutaFichero,'w'))
-    {
-        echo "No se ha podido abrir el fichero";
-        exit;
+    $rutaFichero= "notas.xml";
+    foreach ($variable as $key => $value) {
+        # code...
     }
-    fwrite($fp,$contenido,strlen($contenido));
-    fclose($rutaFichero);
+    
 }
 
 function compruebaBoton(){
     if(!empty($_POST['btn'])){
         if($_POST['btn']=="Editar"){
-            header("Location: ./EditaAlumno.php?contador=".($_POST['contador']));
+            header("Location: ./EditaXML.php?contador=".($_POST['contador']));
         }
         if($_POST['btn']=="Modificar"){
             modificaFichero();

@@ -11,11 +11,16 @@
     <h1>Notas Alumnos</h1>
     <?php
 
-    require "./funcionesCsv.php";
+    require "./funciones.php";
 
-    $contenido=recogeDatos();
+    $rutaFichero="./notas.xml";
 
-    $porAlumno = explode("\n",$contenido);
+    if(file_exists($rutaFichero)){
+        $xml = simplexml_load_file($rutaFichero);
+        
+    }else{
+        exit;
+    }
     
     if(compruebaBoton()){
        
@@ -36,14 +41,13 @@
             <tbody>
                 <?php
                 $cont=0;
-                    foreach ($porAlumno as $value) {
-                        $separados = explode(";",$value);
+                    foreach ($xml as $alumno) {
+                        
                         echo "<tr>";
-                        foreach ($separados as $value) {
-                            # code...
-                            echo "<td>".$value."</td>";
-                        }
-                       
+                        echo "<td>".$alumno->children()[0]."</td>";
+                        echo "<td>".$alumno->children()[1]."</td>";
+                        echo "<td>".$alumno->children()[2]."</td>";
+                        echo "<td>".$alumno->children()[3]."</td>";
                         echo " <form action=".  $_SERVER['PHP_SELF'] ." method='post'>";
                         echo "<input type='hidden' name='contador' value=".$cont.">";
                         echo "<td><input type='submit' name='btn' value='Editar'></td>";
