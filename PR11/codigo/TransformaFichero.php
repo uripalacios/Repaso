@@ -52,6 +52,8 @@ foreach ($porAlumno as $value) {
 }
 $XML->save("./notas.xml");
 
-
+if(file_exists("./notas.xml")){
+    header("Location: ./LeeFicheroXML.php");
+}
 
 ?>

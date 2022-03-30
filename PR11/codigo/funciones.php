@@ -15,13 +15,38 @@ function recogeDatos(){
     fclose($fp);
 }
 function modificaFichero(){
-    global $porAlumno;
+    
     $newCont = array($_POST['nombre'],$_POST['nt1'],$_POST['nt2'],$_POST['nt3']);
     //escritura en fichero
-    $rutaFichero= "notas.xml";
-    foreach ($variable as $key => $value) {
-        # code...
+    $rutafichero= "notas.xml";
+    if(file_exists($rutafichero)){
+        //Transforma el xml en un objeto de tipo simplexml
+        $xml = simplexml_load_file($rutafichero);
+        
+    }else{
+        exit;
+    } 
+
+    $dom = dom_import_simplexml($xml)->ownerDocument;
+
+    $etiquetasNombre = $dom->getElementsByTagName("nombre");
+
+    foreach ($etiquetasNombre as $NombreAlumno) {
+       if($NombreAlumno->nodeValue == $newCont[0]){
+            for ($i=1; $i <=3 ; $i++) { 
+                $aux = $NombreAlumno;
+                do
+                    $aux = $aux->nextSibling;
+                    
+                while ($aux->nodeName != "notas".$i);   
+                $aux->nodeValue = $newCont[$i];
+            }
+            
+       }
     }
+
+
+    $dom->save($rutafichero);
     
 }
 
@@ -32,7 +57,7 @@ function compruebaBoton(){
         }
         if($_POST['btn']=="Modificar"){
             modificaFichero();
-            header("Location: ./MuestraCsv.php");
+            header("Location: ./LeeFicheroXML.php");
         }
     }
 }
