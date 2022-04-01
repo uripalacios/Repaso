@@ -14,15 +14,15 @@
   </alumno>
   <alumno>
     <nombre>ismael</nombre>
-    <notas1>5</notas1>
+    <notas1>10</notas1>
     <notas2>7</notas2>
-    <notas3>3&#13;</notas3>
+    <notas3>3</notas3>
   </alumno>
   <alumno>
     <nombre>uriel</nombre>
-    <notas1>3</notas1>
+    <notas1>9</notas1>
     <notas2>6</notas2>
-    <notas3>5&#13;</notas3>
+    <notas3>5</notas3>
   </alumno>
   <alumno>
     <nombre>aaron</nombre>
@@ -32,8 +32,8 @@
   </alumno>
   <alumno>
     <nombre>hector</nombre>
-    <notas1>7</notas1>
-    <notas2>5</notas2>
-    <notas3>6</notas3>
+    <notas1>3</notas1>
+    <notas2>4</notas2>
+    <notas3>1</notas3>
   </alumno>
 </notas>
