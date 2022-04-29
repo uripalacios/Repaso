@@ -13,10 +13,11 @@
 </html>
 <?php
     require "./funcionesBD.php";
+    require "./conexionBD.php";
 ?>
     <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
         <label for="id">Id:
-            <input type="text" name="id" id="id" value="<?php echo $_REQUEST['id']?>">
+            <input type="text" name="id" id="id" value="<?php echo $_REQUEST['id']?>" readonly>
         </label>
         <br>
         <label for="nombre">Nombre:

@@ -1,5 +1,5 @@
 <?php
-require "./conexionBD.php";
+
 // Funcion que muestra la tabla
 function muestraTabla($filtraNombre,$nombreBuscar){
     
@@ -89,17 +89,17 @@ function muestraTabla($filtraNombre,$nombreBuscar){
 
             // Tabla
             echo "<br><br>";
-            echo "<table border='1'>";
+            echo "<table class='table'>";
             echo "<thead>";
 
             // Primera Fila
-            echo "<td><b>ID</b></td>";
-            echo "<td><b>NOMBRE</b></td>";
-            echo "<td><b>PRECIO</b></td>";
-            echo "<td><b>FECHA DE CADUCIDAD</b></td>";
-            echo "<td><b>MODIFICAR</b></td>";
-            echo "<td><b>ELIMINAR</b></td>";
-            echo "</thead>";
+            echo "<th scope='col'>ID</th>";
+            echo "<th scope='col'>NOMBRE</th>";
+            echo "<th scope='col'>PRECIO</th>";
+            echo "<th scope='col'>FECHA DE CADUCIDAD</b></th>";
+            echo "<th scope='col'>MODIFICAR</th>";
+            echo "<th scope='col'>ELIMINAR</th>";
+            echo "</thead><tbody>";
 
             echo "<tr>";
 
@@ -137,7 +137,7 @@ function muestraTabla($filtraNombre,$nombreBuscar){
             echo "</tr>";
 
             // Fin de la tabla        
-            echo"</table>";
+            echo"</tbody></table>";
             echo "<br><br>";
 
         }
@@ -247,39 +247,79 @@ function insertarRegistro($nombre,$precio,$fecha){
 
         $preparada->execute();
 
-    }catch(PDOException $ex)
-    {
+    }catch(PDOException $ex){
         $numError = $ex->getCode();
 
         // Si no existe la tabla...
-        if($numError == "42S02")
-        {
+        if($numError == "42S02"){
             echo "<br>Error: La tabla no existe.<br>";
         }
         
         // Error al no reconocer la BBDD
-        if($numError == 1049)
-        {
+        if($numError == 1049){
             echo "<br>Error: No se reconoce la BBDD.<br>";
         }
         // Error al conectar con el servidor...
-        else if($numError == 2002)
-        {
+        else if($numError == 2002){
             echo "<br>Error: Error al conectar con el servidor.<br>";
         }
         // Error de autenticación...
-        else if($numError == 1045)
-        {
+        else if($numError == 1045){
             echo "<br>Error: Error en la autenticación.<br>";
         }
     }
-    finally
-    {
+    finally{
         unset($conexion);
     }
 
     header("Location: leer.php");        
         
+}
+function borrarRegistro($id)
+{   
+
+    $dsn = "mysql:host=" . IP . ";dbname=" . BBDD;
+
+    try{
+
+        $conexion = new PDO($dsn,USER,PASS);
+
+        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+        // Consulta preparada
+        $preparada = $conexion->prepare("delete from PRODUCTOS where ID=?;");
+
+        $preparada->bindParam(1,$id);
+        $preparada->execute();
+
+    }catch(PDOException $ex){
+        $numError = $ex->getCode();
+
+        // Si no existe la tabla...
+        if($numError == "42S02"){
+            echo "<br>Error: La tabla no existe.<br>";
+        }
+        
+        // Error al no reconocer la BBDD
+        if($numError == 1049){
+            echo "<br>Error: No se reconoce la BBDD.<br>";
+        }
+        // Error al conectar con el servidor...
+        else if($numError == 2002){
+            echo "<br>Error: Error al conectar con el servidor.<br>";
+        }
+        // Error de autenticación...
+        else if($numError == 1045){
+            echo "<br>Error: Error en la autenticación.<br>";
+        }
+    }
+    finally{
+        unset($conexion);
+    }
+
+    // Se vuelve de nuevo a leer.php
+    header("Location: leer.php");
+
 }
 
 ?>
