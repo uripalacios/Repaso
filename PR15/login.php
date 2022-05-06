@@ -2,9 +2,9 @@
     require_once "./funciones/validaSesion.php";
     //llamar a verifica sesion
     session_start();
-    // if(validaSession()){
-    //    // header("Location: ./paginas/pricipal.php");
-    // }
+    if(validaSession()){
+        //header("Location: ./paginas/principal.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -20,8 +20,9 @@
         <h1>Menú</h1>
         <?php
             session_id();
+            
         ?>
-        <a href="./logout.php">Logout</a>
+        <a href="logout.php">Logout</a>
     </header>
     <form action="./funciones/valida.php" method="post">
         <label for="user">Usuario</label><input type="text" name="user" id="user">
@@ -29,5 +30,6 @@
         <br>
         <input type="submit" value="Login" name="valida">
     </form>
+    <a href="paginas/alta.php">Registarse</a>
 </body>
 </html>

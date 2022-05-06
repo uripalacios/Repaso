@@ -3,7 +3,7 @@
         if(isset($_SESSION['validada']))
             return true;
         else{
-            header("Location: login.php");
+            return false;
             exit;
         }
     }
