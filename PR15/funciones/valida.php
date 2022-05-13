@@ -16,6 +16,6 @@
 
     //validamos si el usuario esta registrado y concuerda nombre y contraseña
     if(valida($user,$pass)){
-        header("Location: ./paginas/productos.php");
+        header("Location: ../paginas/productos.php");
     }
 ?>

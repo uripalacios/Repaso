@@ -26,7 +26,7 @@
                 <?php incompleto('usuario')?>
             </label>
             <br>
-            <label for="fecha">Fecha de nacimiento:(dd-mm-aaaa) 
+            <label for="fecha">Fecha de nacimiento:(aaaa-mm-dd) 
                 <input type="text" name="fecha" id="fecha" value="<?php rellenaFecha('fecha')?>">
                 <?php incompleto('fecha')?>
             </label>
@@ -35,13 +35,14 @@
                 <input type="email" name="email" id="email" value='<?php rellenaEmail()?>'>
                 <?php incompleto('email')?>
             </label>
+            <p>El formato de la contraseña debe ser mínimo 8 caracteres y al final una mayúscula, una minúscula y un numero </p>
             <br>
-            <label for="pass1">Nombre: 
-                <input type="text" name="pass1" id="pass1" placeholder="Contraseña" >
+            <label for="pass1">Contraseña: 
+                <input type="pass" name="pass1" id="pass1" placeholder="Contraseña" >
             </label>
             <br>
-            <label for="pass2">Nombre: 
-                <input type="text" name="pass2" id="pass2" placeholder="Repita contraseña">
+            <label for="pass2">Repita contraseña: 
+                <input type="pass" name="pass2" id="pass2" placeholder="Repita contraseña">
                 <?php incompleto('pass1')?>
             </label>
             <br>

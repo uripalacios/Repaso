@@ -1,5 +1,8 @@
 <?php
+    require "../funciones/validaSesion.php";
 
+    session_start();
+    if(validaPagina($_SESSION['paginas'])){
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -11,8 +14,14 @@
 </head>
 <body>
     <h1>Pagina principal</h1>
-    <ul>
-        li*
-    </ul>
+    <?php
+        mostrarProductos();
+    ?> 
 </body>
 </html>
+<?php
+}else{
+    header("Location: ../login.php");
+}
+
+?>

@@ -11,7 +11,7 @@ function valida($user,$pass){
         $encrip = sha1($pass);
         $sql->bindParam(":pass",$encrip);
         $sql->execute();
-        $prueba = $sql->rowCount();
+        //$prueba = $sql->rowCount();
         //si coincide un valor entra y  le asignamos los datos que vamos a necesitar
         if($sql->rowCount()==1){
             session_start();
@@ -25,7 +25,7 @@ function valida($user,$pass){
             //paginas a las que tiene acceso
             $sqlp =$con->prepare( "select descripcion,url
             from paginas p join accede a on (p.codigo=a.codigoPagina)
-            where codigoPerfil = :perfil or codigoPerfil = todos");
+            where codigoPerfil = :perfil or codigoPerfil = 'todos'");
             $sqlp->bindParam(":perfil",$_SESSION['perfil']);
             $sqlp->execute();
 
@@ -57,14 +57,14 @@ function insertarRegistro($usuario,$email,$fecha,$pass){
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         echo "Todo okey";
-        
+        $encrip = sha1($pass);
         // Consulta preparada
         $preparada = $conexion->prepare("insert into usuarios (usuario,email,fecha_nacimiento,clave,perfil) VALUES (?,?,?,?,'U0001')");
 
         $preparada->bindParam(1,$usuario);
         $preparada->bindParam(2,$email);
         $preparada->bindParam(3,$fecha);
-        $preparada->bindParam(4,$pass);
+        $preparada->bindParam(4,$encrip);
 
         $preparada->execute();
 
@@ -93,4 +93,106 @@ function insertarRegistro($usuario,$email,$fecha,$pass){
         unset($conexion);
     }
         
+}
+function mostrarProductos(){
+ 
+    // DSN
+    $dsn = "mysql:host=" . IP . ";dbname=" . BBDD;
+
+    try{
+
+        $conexion = new PDO($dsn,USER,PASS);
+
+        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Si se quiere filtrar por nombre...
+       
+        // Si se quieren mostrar todos los registros...
+       
+            $sql = "select * from productos;";
+
+            $resultado = $conexion->query($sql);
+
+            // Tabla
+            echo "<br><br>";
+            echo "<table class='table'>";
+            echo "<thead>";
+
+            // Primera Fila
+            echo "<th scope='col'>ID</th>";
+            echo "<th scope='col'>NOMBRE</th>";
+            echo "<th scope='col'>PRECIO</th>";
+            echo "<th scope='col'>FECHA DE CADUCIDAD</b></th>";
+            echo "<th scope='col'>MODIFICAR</th>";
+            echo "<th scope='col'>ELIMINAR</th>";
+            echo "</thead><tbody>";
+
+            echo "<tr>";
+
+            while($fila = $resultado->fetch()){
+                // ID
+                echo "<td>";
+                echo $fila["ID"];
+                echo "</td>";
+
+                // NOMBRE
+                echo "<td>";
+                echo $fila["NOMBRE"];
+                echo "</td>";
+                
+                // PRECIO
+                echo "<td>";
+                echo $fila["PRECIO"];
+                echo " €</td>";
+            
+                // FECHA
+                echo "<td>";
+                echo $fila["FECHA_CADUCIDAD"];
+                echo "</td>";
+                
+                // Modificar
+                echo "<td><a href='modificar.php?id=" . $fila['ID'] . "&nombre=" . $fila['NOMBRE'] 
+                    . "&precio=" . $fila['PRECIO'] 
+                    . "&fecha=" . $fila['FECHA_CADUCIDAD'] . "'>Modificar</a></td>";
+
+                // ELiminar
+                echo "<td><a href='eliminar.php?id=" . $fila['ID'] . "'>Eliminar</a></td>";
+                echo "</tr>";
+
+            echo "</tr>";
+
+            // Fin de la tabla        
+            echo"</tbody></table>";
+            echo "<br><br>";
+
+        }
+        
+
+    }
+    catch(PDOException $ex){
+        $numError = $ex->getCode();
+
+        // Si no existe la tabla...
+        if($numError == "42S02"){
+            echo "<br>Error: La tabla no existe.<br>";
+        }
+        
+        // Error al no reconocer la BBDD
+        if($numError == 1049){
+            echo "<br>Error: No se reconoce la BBDD.<br>";
+        }
+        // Error al conectar con el servidor...
+        else if($numError == 2002){
+            echo "<br>Error: Error al conectar con el servidor.<br>";
+        }
+        // Error de autenticación...
+        else if($numError == 1045){
+            echo "<br>Error: Error en la autenticación.<br>";
+        }
+    }
+    finally{
+        // Cierro la conexion
+        unset($conexion);
+    }
+
 }

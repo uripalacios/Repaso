@@ -68,7 +68,9 @@ function rellenaFecha($id){
 //funcion que comprueba patron de nombre y no vacio
 function compruebaPass($pass1,$pass2){
     global $arrayError;
-    if(!empty($_POST[$pass1]) && preg_match('/^\D{3,}$/',$_POST[$pass1])&& $_POST[$pass1]==$_POST[$pass2]){
+    //if(!empty($_POST[$pass1]) && preg_match('/^\D\d{5,}[A-Z]{1}[a-z]{1}\d{1}$/',$_POST[$pass1])&& $_POST[$pass1]==$_POST[$pass2]){
+    if(!empty($_POST[$pass1]) && preg_match('/[\D\d]{8,}/',$_POST[$pass1])&& preg_match('/[A-Z]{1,}/',$_POST[$pass1])
+        && preg_match('/[a-z]{1,}/',$_POST[$pass1])&& preg_match('/\d{1,}/',$_POST[$pass1])&& $_POST[$pass1]==$_POST[$pass2]){
         return true;
     }else{
         $arrayError[$pass1]="La contraseña no coincide o no es el formato adecuado";
