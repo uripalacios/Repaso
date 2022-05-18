@@ -78,6 +78,7 @@ insert into paginas (codigo,descripcion,url) values ('PAG08','Ver Ventas','verVe
 insert into paginas (codigo,descripcion,url) values ('PAG09','Ver Albaran','verAlbaran.php');
 insert into paginas (codigo,descripcion,url) values ('PAG10','Modificar Ventas','modificarVentas.php');
 insert into paginas (codigo,descripcion,url) values ('PAG11','Modificar Albaran','modificarAlbaran.php');
+insert into paginas (codigo,descripcion,url) values ('PAG12','Edita perfil','editarPerfil.php');
 
 insert into accede (codigoPerfil,codigoPagina) values ('todos','PAG01');
 insert into accede (codigoPerfil,codigoPagina) values ('todos','PAG02');
@@ -90,6 +91,7 @@ insert into accede (codigoPerfil,codigoPagina) values ('ADM01','PAG08');
 insert into accede (codigoPerfil,codigoPagina) values ('ADM01','PAG09');
 insert into accede (codigoPerfil,codigoPagina) values ('ADM01','PAG10');
 insert into accede (codigoPerfil,codigoPagina) values ('ADM01','PAG11');
+insert into accede (codigoPerfil,codigoPagina) values ('ADM01','PAG12');
 insert into accede (codigoPerfil,codigoPagina) values ('MOD01','PAG06');
 insert into accede (codigoPerfil,codigoPagina) values ('MOD01','PAG08');
 insert into accede (codigoPerfil,codigoPagina) values ('MOD01','PAG09');
