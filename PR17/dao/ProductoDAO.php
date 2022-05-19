@@ -27,7 +27,8 @@ class ProductoDAO implements DAO{
         
         $producto = new Producto($row->cod_producto,$row->descripcion, $row->precio,$row->stock);
         return $producto;
-    }
+
+      }
 
     // Método que modifica/actualiza un producto
     public static function update($objeto){

@@ -9,9 +9,9 @@ if(isset($_POST['registro'])){
 // 
 else if (isset($_POST['Enviado'])){
     
-    $todoOk = validaSiVacio($_POST['nombre']);
+    $todoOk = validaSiVacio('nombre');
     if($todoOk)
-        $todoOk = validaSiVacio($_POST['pass']);
+        $todoOk = validaSiVacio('pass');
 
     // llamamos a valida si vacio y devuelve true o false (implementar)
     if($todoOk)
@@ -23,7 +23,7 @@ else if (isset($_POST['Enviado'])){
         $pass = $_POST["pass"];
 
         // Se encripta la contraseña (mediante 'SHA256')
-        $pass = hash("SHA256",$pass);
+        $pass = sha1($pass);
         
 
         // Compruebo si existe el usuario en la BBDD

@@ -6,7 +6,7 @@ if (isset($_POST['volver'])){//que haya rellenado y verifica si existe
     $_SESSION['pagina'] = 'inicio';
     header('Location: index.php');
     exit();
-}else if (isset($_POST['registro'])){//que haya rellenado y verifica si existe 
+}else if (isset($_POST['Enviado'])){//que haya rellenado y verifica si existe 
     if(validaFormulario()){
         $usuario=$_REQUEST['usuario'];
         $email=$_REQUEST['email'];

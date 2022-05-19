@@ -38,7 +38,7 @@ create table productos(
 )engine=innodb;
 
  create table ventas(
-	id int auto_increment primary key,
+	id_venta int auto_increment primary key,
 	usuario char(20) not null,
 	fecha_compra date default(current_date),
 	cod_producto varchar(6) not null,
@@ -49,7 +49,7 @@ create table productos(
  )engine=innodb;
  
 create table albaran(
-	id int auto_increment primary key,
+	id_albaran int auto_increment primary key,
 	fecha_albaran date default(current_date),
 	cod_producto varchar(6) not null,
 	cantidad int(6) not null,

@@ -18,11 +18,11 @@
         <p>El formato de la contraseña debe ser mínimo 8 caracteres y al final una mayúscula, una minúscula y un numero </p>
         <br>
         <label for="pass1">Contraseña: 
-            <input type="pass" name="pass1" id="pass1" placeholder="Contraseña" >
+            <input type="password" name="pass1" id="pass1" placeholder="Contraseña" >
         </label>
         <br>
         <label for="pass2">Repita contraseña: 
-            <input type="pass" name="pass2" id="pass2" placeholder="Repita contraseña">
+            <input type="password" name="pass2" id="pass2" placeholder="Repita contraseña">
             <?php incompleto('pass1')?>
         </label>
         <br>

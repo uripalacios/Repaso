@@ -41,6 +41,14 @@ if(isset($lista)){
                     if(isset($_SESSION["validada"])){
                         if($_SESSION["validada"] == true){
                             //formulario para enviar el codigo de producto y hacer detalle de producto
+                            echo "<td>";
+                            ?>
+                                <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+                                    <input type="submit" name="verPro" value="Ver Producto">
+                                    <input type="hidden" name="cod_producto" value="<?php echo $value->cod_producto ?>">
+                                </form>
+                            <?php
+                            echo "</td>";
                         }
                     }
                         

@@ -27,5 +27,6 @@ $vistas = [
     'layout' => 'vista/vLayout.php',
     'registro' => 'vista/vRegistro.php',
     'perfil' => 'vista/vPerfil.php',
-    'listaProductos' => 'vista/vListaProductos.php'
+    'listaProductos' => 'vista/vListaProductos.php',
+    'detalleProducto' => 'vista/vDetalleProducto.php'
 ];

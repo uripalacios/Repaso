@@ -23,6 +23,10 @@ else if(isset($_POST['perfil']))
     $_SESSION['pagina'] = 'perfil';
     header('Location: index.php');
     exit();
+}else if(isset($_POST['verPro'])){
+    $_SESSION['vista']=$vistas['detalleProducto'];
+    $producto = ProductoDAO::findById($_POST['cod_producto']);
+    require_once $vistas['layout'];
 }
 else if($_SESSION['validada']){
     $_SESSION['vista'] = $vistas['listaProductos'];

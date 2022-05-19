@@ -15,10 +15,10 @@
 
         // Si la sesion esta validada
         if (isset($_SESSION['validada'])) {
+            echo "<p>" . $_SESSION["usuario"] . "</p>";
 
             // Y eres usuario administrador
             if($_SESSION["perfil"] == "ADM01"){
-                echo "<p>" . $_SESSION["usuario"] . "</p>";
                 ?>
 
                 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
@@ -45,7 +45,7 @@
             }
         */
 
-            echo "<p>" . $_SESSION["usuario"] . "</p>";
+            
         ?>
 
             <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
