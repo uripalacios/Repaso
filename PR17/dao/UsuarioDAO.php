@@ -32,7 +32,7 @@ class UsuarioDAO implements DAO{
     }
     //crear o insertar
     public static function save($objeto){
-        $sql = "insert into usuarios(usuario,clave,email,fecha_nacimiento,perfil)values(?,?,?,?,?);";
+        $sql = "insert into usuarios (usuario,clave,email,fecha_nacimiento,perfil) values (?,?,?,?,?);";
         $arrayParametros=[$objeto->usuario,$objeto->clave,$objeto->email,$objeto->fecha_nacimiento,$objeto->perfil];
         $consulta = ConexionBD::ejecutaConsulta($sql,$arrayParametros);
     }
@@ -42,9 +42,9 @@ class UsuarioDAO implements DAO{
    
 
     public static function validaUser($user,$pass){
-            $encrip=sha1($pass);
-            $sql = "select * from usuarios where usuario = ? and password = ?";
-            $consulta = ConexionBD::ejecutaConsulta($sql,[$user,$encrip]);
+            
+            $sql = "select * from usuarios where usuario = ? and clave = ?";
+            $consulta = ConexionBD::ejecutaConsulta($sql,[$user,$pass]);
             $cont = 0;
             $usuario = null;
             while ($row = $consulta->fetchObject()) {

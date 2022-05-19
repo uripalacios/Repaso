@@ -1,7 +1,7 @@
 <?php
 
 class Venta{
-    private $id;
+    private $id_venta;
     private $usuario;
     private $fecha_compra;
     private $cod_producto;
@@ -11,7 +11,7 @@ class Venta{
 
     function __construct($id,$usu,$feCom,$codPro,$cant,$preTo)
     {
-        $this->id = $id;
+        $this->id_venta = $id;
         $this->usuario = $usu;
         $this->fecha_compra = $feCom;
         $this->cod_producto = $codPro;

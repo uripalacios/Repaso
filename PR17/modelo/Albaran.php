@@ -1,7 +1,7 @@
 <?php
 
 class Albaran{
-    private $id;
+    private $id_albaran;
     private $fecha_albaran;
     private $cod_producto;
     private $cantidad;
@@ -10,7 +10,7 @@ class Albaran{
 
     function __construct($id,$feAl,$codPro,$cant,$usu)
     {
-        $this->id = $id;
+        $this->id_albaran = $id;
         $this->fecha_albaran = $feAl;
         $this->cod_producto = $codPro;
         $this->cantidad = $cant;
