@@ -1,6 +1,10 @@
 <h2>Detalle de Producto</h2>
 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 <?php
+if(isset($_SESSION["mensaje"]))
+{
+    echo $_SESSION["mensaje"];
+}
 if(isset($producto)){
     
         echo "<table class='table'>";
@@ -21,8 +25,20 @@ if(isset($producto)){
             echo "<td>" . $producto->stock . "</td>";
         
         echo "</tr></table>";
-   
+        ?>
+        <label for="cantPro">Cantidad a comprar:
+            <input type="number" name="cantPro" id="cantPro" value="1">
+        </label>
+        <input type="submit" name="comprar" value="Comprar">
+        <input type="hidden" name="cod_producto" value="<?php echo $producto->cod_producto?>">
+        <?php
+
+if(isset($_SESSION["mensaje"]))
+{
+    echo $_SESSION["mensaje"];
+}
 }else{
+    echo "</form>";
     echo "<h3>Ha habido un error al mostrar el producto</h3>";
 }
 

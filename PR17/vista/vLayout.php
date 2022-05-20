@@ -49,6 +49,7 @@
         ?>
 
             <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+                <input type="submit" value="Productos" name="productos">
                 <input type="submit" value="Pefil" name="perfil">
                 <input type="submit" value="Logout" name="logout">
             </form>

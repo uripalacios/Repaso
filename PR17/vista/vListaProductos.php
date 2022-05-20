@@ -36,7 +36,7 @@ if(isset($lista)){
                     echo "<td>" . $value->stock . "</td>";
 
                     if($_SESSION['perfil']=='Admin'){
-                        //formulario paramodificar y borrar si se es admin
+                        //formulario para modificar y borrar si se es admin
                     }
                     if(isset($_SESSION["validada"])){
                         if($_SESSION["validada"] == true){
@@ -44,7 +44,7 @@ if(isset($lista)){
                             echo "<td>";
                             ?>
                                 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-                                    <input type="submit" name="verPro" value="Ver Producto">
+                                    <input type="submit" name="verPro" value="Ver Producto" >
                                     <input type="hidden" name="cod_producto" value="<?php echo $value->cod_producto ?>">
                                 </form>
                             <?php

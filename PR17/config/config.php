@@ -18,7 +18,8 @@ $controladores = [
     'login' => 'controlador/cLogin.php',
     'registro' => 'controlador/cRegistro.php',
     'perfil' => 'controlador/cPerfil.php',
-    'producto' => 'controlador/cProducto.php'
+    'producto' => 'controlador/cProducto.php',
+    'perfil' => 'controlador/cPerfil.php'
 ];
 
 $vistas = [
