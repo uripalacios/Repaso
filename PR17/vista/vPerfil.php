@@ -17,7 +17,7 @@
             <?php incompleto('email')?>
         </label>
         <p>El formato de la contraseña debe ser mínimo 8 caracteres y al final una mayúscula, una minúscula y un numero </p>
-        <br>
+       
         <label for="pass1">Contraseña: 
             <input type="password" name="pass1" id="pass1" placeholder="Contraseña" >
         </label>

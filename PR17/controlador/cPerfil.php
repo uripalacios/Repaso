@@ -1,5 +1,5 @@
 <?php
-require "./core/validaRegistro.php";
+require "./core/validaPerfil.php";
 if(isset($_POST['logout']))
 {
     // Cierre de la sesion
@@ -15,23 +15,30 @@ if(isset($_POST['logout']))
         header("Location: index.php");
 } else if(isset($_POST['modificar'])){
     if(validaFormulario()){
-        $usuario=$_REQUEST['usuario'];
+        $usu=$_REQUEST['usuario'];
         $email=$_REQUEST['email'];
         $fecha=$_REQUEST['fecha'];
         $encrip = sha1($_REQUEST['pass1']);
         $perfil = "U0001";
         
-        $usuarioNuevo = new Usuario($usuario, $encrip, $email,$fecha, $perfil);
-        UsuarioDAO::update($usuarioNuevo);
+        $usuario = new Usuario($usu, $encrip, $email,$fecha, $perfil);
+        UsuarioDAO::update($usuario);
         
         $_SESSION['validada']=true;
-        $_SESSION["usuario"] = $usuario;
+        $_SESSION["usuario"] = $usu;
         $_SESSION["email"] = $email;
         $_SESSION["fecha_nacimiento"] = $fecha;
         $_SESSION["perfil"] = $perfil;
         
         $_SESSION["pagina"] = "inicio";
         header("Location: index.php");
+    }else{
+        $codUsuario = $_SESSION["usuario"];
+        $usuario = UsuarioDAO::findById($codUsuario);
+        
+        $_SESSION['pagina'] = 'perfil';
+        $_SESSION['vista'] = $vistas['perfil'];
+        require_once $vistas['layout']; 
     }
 }else{
     $arrayErrores = Array();
