@@ -20,7 +20,8 @@ $controladores = [
     'registro' => 'controlador/cRegistro.php',
     'perfil' => 'controlador/cPerfil.php',
     'producto' => 'controlador/cProducto.php',
-    'perfil' => 'controlador/cPerfil.php'
+    'perfil' => 'controlador/cPerfil.php',
+    'usuarios' => 'controlador/cUsuarios.php'
 ];
 
 $vistas = [
@@ -31,5 +32,7 @@ $vistas = [
     'perfil' => 'vista/vPerfil.php',
     'listaProductos' => 'vista/vListaProductos.php',
     'detalleProducto' => 'vista/vDetalleProducto.php',
-    'deseos' => 'vista/vListaDeseos.php'
+    'deseos' => 'vista/vListaDeseos.php',
+    'usuarios' => 'vista/vListaUsuarios.php',
+    'modUsuarios' => 'vista/vModUsuario.php'
 ];

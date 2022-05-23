@@ -17,10 +17,10 @@ class UsuarioDAO implements DAO{
 }
     //busca por id(busca por la clave primaria)
     public static function findById($id){
-            $sql = "select usuario, email,fecha_nacimiento,perfil from usuarios where usuario = ?;";
+            $sql = "select usuario,clave, email,fecha_nacimiento,perfil from usuarios where usuario = ?;";
             $consulta =ConexionBD::ejecutaConsulta($sql, [$id]);
             $row = $consulta->fetchObject();
-            $user = new Usuario($row->usuario,'',
+            $user = new Usuario($row->usuario,$row->clave,
             $row->email,$row->fecha_nacimiento, $row->perfil);
             return $user;
     }
@@ -37,9 +37,18 @@ class UsuarioDAO implements DAO{
         $consulta = ConexionBD::ejecutaConsulta($sql,$arrayParametros);
     }
     //borrar
-    public static function delete($objeto){}
-
-   
+    public static function delete($objeto)
+    {
+        
+    }
+    public static function deleteById($id)
+    {
+        $sql = "delete from usuarios where usuario=?;";
+    
+        $arrayParametros = [$id];
+        $consulta = ConexionBD::ejecutaConsulta($sql,$arrayParametros);
+        
+    }
 
     public static function validaUser($user,$pass){
             

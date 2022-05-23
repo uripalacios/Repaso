@@ -12,7 +12,7 @@ if(isset($_POST['logout']))
     exit();
 }else if(isset($_POST['productos'])){
     $_SESSION["pagina"] = "inicio";
-        header("Location: index.php");
+    header("Location: index.php");
 } else if(isset($_POST['modificar'])){
     if(validaFormulario()){
         $usu=$_REQUEST['usuario'];

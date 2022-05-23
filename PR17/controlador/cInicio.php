@@ -24,6 +24,13 @@ else if(isset($_POST['perfil']))
     header('Location: index.php');
     exit();
 }
+//admin Usuarios
+else if(isset($_POST['usuarios'])){
+    $lista = UsuarioDAO::findAll();
+    $_SESSION['pagina'] = 'usuarios';
+    header('Location: index.php');
+    exit();
+}
 else if(isset($_POST['listaDeseos']))
 {
     //$lista = ProductoDAO::findAll();
