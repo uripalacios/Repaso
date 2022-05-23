@@ -5,12 +5,12 @@ function get(){
     $ch = curl_init();
     
     //mi conexion
-    //curl_setopt($ch,CURLOPT_URL,"http://10.1.160.105/RepasoTema3/Apirepaso/index.php/producto");
-    curl_setopt($ch,CURLOPT_URL,"http://localhost/Apirepaso/index.php/producto");
+    curl_setopt($ch,CURLOPT_URL,"http://10.1.160.105/RepasoTema3/Apirepaso/index.php/producto");
+    //curl_setopt($ch,CURLOPT_URL,"http://localhost/Repaso/Apirepaso/index.php/producto");
     curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
     $res = curl_exec($ch);
     curl_close($ch);
-    print_r($res);
+   
     return $res;
 
 }
@@ -49,9 +49,16 @@ function put(){
     curl_close($ch);
     return $res;
 }
-
+/*
 //pruebas para ejecutar
- //get();
+$lista = get();
+//leer fecth_assc
+$lista = json_decode($lista,true);
+foreach ($lista as $value) {
+    # code...
+    echo $value['cod_producto'];
+}
+*/
 // post();
 //put();
 ?>

@@ -29,15 +29,15 @@
 
             foreach ($lista as $value) 
             {
-                if(compruebaDeseado($value->cod_producto,$_SESSION["usuario"]))
+                if(compruebaDeseado($value["cod_producto"],$_SESSION["usuario"]))
                 {
                     
                     echo "<tr>";
 
-                        echo "<td>" . $value->cod_producto . "</td>";
-                        echo "<td>" . $value->descripcion . "</td>";
-                        echo "<td>" . $value->precio . "</td>";
-                        echo "<td>" . $value->stock . "</td>";
+                        echo "<td>" . $value["cod_producto"] . "</td>";
+                        echo "<td>" . $value["descripcion"] . "</td>";
+                        echo "<td>" . $value["precio"] . "</td>";
+                        echo "<td>" . $value["stock"] . "</td>";
 
                         if(isset($_SESSION["validada"]))
                         {
@@ -48,7 +48,7 @@
                                     ?>
                                     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
                                     <input type="submit" name="verPro" value="Ver Producto" >
-                                    <input type="hidden" name="cod_producto" value="<?php echo $value->cod_producto ?>">
+                                    <input type="hidden" name="cod_producto" value="<?php echo $value["cod_producto"] ?>">
                                     </form>
                                     <?php
                                 echo "</td>";
