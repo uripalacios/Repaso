@@ -1,4 +1,4 @@
-<?
+<?php
 
 function get(){
     //Para pedir por curl
@@ -10,6 +10,7 @@ function get(){
     curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
     $res = curl_exec($ch);
     curl_close($ch);
+    print_r($res);
     return $res;
 
 }
@@ -50,7 +51,7 @@ function put(){
 }
 
 //pruebas para ejecutar
-// get();
+ //get();
 // post();
 //put();
 ?>
