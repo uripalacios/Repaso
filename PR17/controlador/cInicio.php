@@ -23,7 +23,17 @@ else if(isset($_POST['perfil']))
     $_SESSION['pagina'] = 'perfil';
     header('Location: index.php');
     exit();
-}else if(isset($_POST['verPro']))
+}
+else if(isset($_POST['listaDeseos']))
+{
+    $lista = ProductoDAO::findAll();
+    //$lista = get();
+
+    $_SESSION['vista']=$vistas['deseos'];
+    
+    require_once $vistas['layout'];
+}
+else if(isset($_POST['verPro']))
 {
     $_SESSION['vista']=$vistas['detalleProducto'];
     $producto = ProductoDAO::findById($_POST['cod_producto']);

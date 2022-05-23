@@ -1,6 +1,5 @@
 <?php
 
-
 require "./config/datosBD.php";
 require "./modelo/ConexionBD.php";
 require './dao/DAO.php';
@@ -12,6 +11,8 @@ require "./modelo/Producto.php";
 require "./dao/ProductoDAO.php";
 require "./modelo/Venta.php";
 require "./dao/VentaDAO.php";
+require "./core/funcionesCookies.php";
+//require_once "./core/curl.php";
 
 $controladores = [
     'inicio' => 'controlador/cInicio.php',
@@ -29,5 +30,6 @@ $vistas = [
     'registro' => 'vista/vRegistro.php',
     'perfil' => 'vista/vPerfil.php',
     'listaProductos' => 'vista/vListaProductos.php',
-    'detalleProducto' => 'vista/vDetalleProducto.php'
+    'detalleProducto' => 'vista/vDetalleProducto.php',
+    'deseos' => 'vista/vListaDeseos.php'
 ];
