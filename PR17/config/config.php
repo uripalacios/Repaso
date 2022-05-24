@@ -12,7 +12,7 @@ require "./dao/ProductoDAO.php";
 require "./modelo/Venta.php";
 require "./dao/VentaDAO.php";
 require "./core/funcionesCookies.php";
-//require_once "./core/curl.php";
+require_once "./core/curl.php";
 
 $controladores = [
     'inicio' => 'controlador/cInicio.php',

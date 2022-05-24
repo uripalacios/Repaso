@@ -26,8 +26,11 @@ else if(isset($_POST['perfil']))
 }
 else if(isset($_POST['listaDeseos']))
 {
-    $lista = ProductoDAO::findAll();
-    //$lista = get();
+    //$lista = ProductoDAO::findAll();
+
+    //prueba para integrar una api
+    $lista = get();
+    $lista = json_decode($lista,true);
 
     $_SESSION['vista']=$vistas['deseos'];
     
