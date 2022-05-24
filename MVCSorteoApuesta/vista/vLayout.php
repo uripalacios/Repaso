@@ -27,7 +27,7 @@
                 // Codigo de Usuario
                 echo "<p style='float:left'><b>Id usuario: " . $_SESSION['usuario'] . "</b></p>";
                 echo "<br>";
-            } 
+            }
         ?>
 
     <!-- Vista -->
