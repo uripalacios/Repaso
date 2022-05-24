@@ -1,3 +1,24 @@
+<?php
+if(isset($_COOKIE['recuerdame']))
+{
+    $user=$_COOKIE['recuerdame'][0];
+    $pass=$_COOKIE['recuerdame'][1];
+
+    $usuario = UsuarioDAO::validaUser($user, $pass);
+
+    if($usuario != null)
+    { 
+                       
+        $_SESSION["validada"] = true;
+        $_SESSION["usuario"] = $usuario->usuario;
+        $_SESSION["email"] = $usuario->email;
+        $_SESSION["fecha_nacimiento"] = $usuario->fecha_nacimiento;
+        $_SESSION["perfil"] = $usuario->perfil;
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

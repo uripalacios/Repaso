@@ -22,7 +22,7 @@ else if (isset($_POST['Enviado'])){
         $user = $_POST["nombre"];
         $pass = $_POST["pass"];
 
-        // Se encripta la contraseña (mediante 'SHA256')
+        // Se encripta la contraseña (mediante 'sha1')
         $pass = sha1($pass);
         
 
@@ -33,7 +33,7 @@ else if (isset($_POST['Enviado'])){
         if($usuario != null)
         {
             
-            echo "todo ok";
+            
 
             // Guardo los datos del usuario en la sesion
             $_SESSION["validada"] = true;
@@ -42,6 +42,10 @@ else if (isset($_POST['Enviado'])){
             $_SESSION["fecha_nacimiento"] = $usuario->fecha_nacimiento;
             $_SESSION["perfil"] = $usuario->perfil;
             
+            if(isset($_REQUEST['recordarme']))
+                {
+                    recuerdame();
+                }
             // Se accede al inicio
             $_SESSION["pagina"] = "inicio";
             header("Location: index.php");
@@ -53,6 +57,11 @@ else if (isset($_POST['Enviado'])){
             require_once $vistas["layout"];
         }
 
+    }else{
+
+        $_SESSION["mensaje"] = "Debe rellenar los campos";
+        $_SESSION["vista"] = $vistas["login"];
+        require_once $vistas["layout"];
     }
 }
 else if (isset($_POST['volver']))

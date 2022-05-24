@@ -6,7 +6,12 @@ if(isset($_POST['logout']))
     // Cierre de la sesion
     unset($_SESSION['validada']);
     session_destroy();
-
+    //para guardar la sesion si se marco recordarme
+    if(isset($_COOKIE['recuerdame']))
+    {
+        setcookie('recuerdame[0]',$_COOKIE['recuerdame'][0], time()-31536000, "/" );
+        setcookie('recuerdame[1]',$_COOKIE['recuerdame'][1], time()-31536000, "/" );
+    } 
     //no hace falta pasarle la pagina porque no lleva datos
     //$_SESSION['pagina'] = 'inicio';
     header('Location: index.php');

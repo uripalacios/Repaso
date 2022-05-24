@@ -1,5 +1,7 @@
 <?php
 
+require "./core/funcionesCookies.php";
+require "./core/curl.php";
 require "./config/datosBD.php";
 require "./modelo/ConexionBD.php";
 require './dao/DAO.php';
@@ -11,8 +13,6 @@ require "./modelo/Producto.php";
 require "./dao/ProductoDAO.php";
 require "./modelo/Venta.php";
 require "./dao/VentaDAO.php";
-require "./core/funcionesCookies.php";
-require_once "./core/curl.php";
 
 $controladores = [
     'inicio' => 'controlador/cInicio.php',

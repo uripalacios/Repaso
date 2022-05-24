@@ -16,6 +16,8 @@
         <input type="password" name="pass" id="pass">
     </label>
     <br>
+    <label for="recordarme">Recordarme <input type="checkbox" name="recordarme" id="recordarme"></label>
+    <br>
     <input type="submit" value="Iniciar Sesión" name="Enviado">
     <input type="submit" value="Registro" name="registro">
     <input type="submit" value="Volver" name="volver">
