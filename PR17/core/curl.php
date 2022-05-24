@@ -21,7 +21,7 @@ function post(){
     $ch = curl_init();
 
     //curl_setopt($ch,CURLOPT_URL,"ttp://10.1.160.105/RepasoTema3/Apirepaso/index.php/producto");
-    curl_setopt($ch,CURLOPT_URL,"http://localhost/Apirepaso/index.php/producto");
+    curl_setopt($ch,CURLOPT_URL,"http://localhost/Repaso/Apirepaso/index.php/producto");
     $datosU = array('cod_producto'=>$_POST['cod_producto'],'descripcion'=>$_POST['descripcion'],'precio'=>$_POST['precio'],'stock'=>$_POST['stock']);
     $datoshttp = http_build_query($datosU);
     curl_setopt($ch,CURLOPT_POST,true);
@@ -35,7 +35,7 @@ function put(){
     $ch = curl_init();
     //url
     $datosU = array('cod_producto'=>'curl','descripcion'=>'curl','precio'=>'curl','stock'=>'curl');
-    curl_setopt($ch,CURLOPT_URL,"http://localhost/Apirepaso/index.php/producto/".$datosU['cod_producto']);
+    curl_setopt($ch,CURLOPT_URL,"http://localhost/Repaso/Apirepaso/index.php/producto/".$datosU['cod_producto']);
     $datosjson = json_encode($datosU);
     //cabecera que voy a enviar json/xml
     curl_setopt($ch,CURLOPT_HTTPHEADER,
