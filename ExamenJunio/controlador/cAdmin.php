@@ -11,7 +11,7 @@ if(isset($_POST['logout']))
 }
 //pulsar filtrar
 else if(isset($_POST['filtrar'])){
-   if($_POST['seleccione']!=0){
+   if($_POST['seleccione']!="0"){
         $filtroestado = $_POST['seleccione'];
         $lista = getEstado($filtroestado);
         $lista=json_decode($lista,true);
