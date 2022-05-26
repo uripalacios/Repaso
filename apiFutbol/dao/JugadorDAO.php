@@ -1,24 +1,24 @@
 <?php
 
-class EquipoDAO implements DAO{
+class JugadorDAO implements DAO{
     public static function findAll(){
-        $sql = "select * from equipo";
+        $sql = "select * from jugadores";
         $consulta = ConexionBD::ejecutaConsulta($sql,[]);
         $registros = $consulta->fetchAll(PDO::FETCH_ASSOC);
         return $registros;
     }
     //Busca por clave primaria
     public static function findById($id){
-        $sql = "select * from equipo where codEquipo=?";
+        $sql = "select * from jugadores where codJugador=?";
         $consulta = ConexionBD::ejecutaConsulta($sql,[$id]);
         $row = $consulta->fetchObject();
         return $row;
     }
     //modifica o actualiza
     public static function update($objeto){
-        $sql = "update equipo set codEquipo=?,nombre=?,localidad=? where codEquipo=?";
+        $sql = "update jugadores set codJugador=?,nombre=?,posicion=?,sueldo=?,codEquipo=? where codJugador=?";
         $consulta = ConexionBD::ejecutaConsulta($sql,[
-            $objeto->codEquipo,$objeto->nombre,$objeto->localidad,$objeto->codEquipo
+            $objeto->codJugador,$objeto->nombre,$objeto->posicion,$objeto->sueldo,$objeto->codEquipo,$objeto->codJugador
         ]);
 
         
@@ -31,9 +31,9 @@ class EquipoDAO implements DAO{
     public static function save($objeto){
         try{
             //Solo hay que decirles los campos en el caso que no les pasemos todos
-            $sql = "insert into equipo (nombre,localidad) values (?,?)";
+            $sql = "insert into jugadores (nombre,posicion,sueldo,codEquipo) values (?,?,?,?,?)";
             $consulta = ConexionBD::ejecutaConsulta($sql,[
-                $objeto->nombre,$objeto->localidad
+                $objeto->nombre,$objeto->posicion,$objeto->sueldo,$objeto->codEquipo
             ]);
         }catch(Error $e){
             return $e->getMessage();
@@ -42,7 +42,7 @@ class EquipoDAO implements DAO{
     }
     //borrar
     public static function delete($id){
-        $sql = "delete from equipo where codEquipo = ?";
+        $sql = "delete from jugadores where codJugador = ?";
         $consulta = ConexionBD::ejecutaConsulta($sql, [$id]);
         return $consulta;
     }
@@ -50,9 +50,9 @@ class EquipoDAO implements DAO{
     {
         
     }
-    public static function mostrarJugadorPorEquipo($idEquipo){
-        $sql = "select * from jugadores where codEquipo=?";
-        $consulta = ConexionBD::ejecutaConsulta($sql,[$idEquipo]);
+    public static function findFiltros($filtro,$array){
+        $sql = "select * from jugadores where ".$filtro;
+        $consulta = ConexionBD::ejecutaConsulta($sql,$array);
         $registros = $consulta->fetchAll(PDO::FETCH_ASSOC);
         return $registros;
     }
