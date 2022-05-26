@@ -31,7 +31,7 @@ class IncidenciasDAO implements DAO{
     public static function save($objeto){
         try{
             //Solo hay que decirles los campos en el caso que no les pasemos todos
-            $sql = "insert into productos (aula,equipo,descripcion,fecha,idusuario) values (?,?,?,?,?)";
+            $sql = "insert into incidencia (aula,equipo,descripcion,fecha,idusuario) values (?,?,?,?,?)";
             $consulta = ConexionBD::ejecutaConsulta($sql,[
                 $objeto->aula,$objeto->equipo,$objeto->descripcion,$objeto->fecha,$objeto->idusuario
             ]);
