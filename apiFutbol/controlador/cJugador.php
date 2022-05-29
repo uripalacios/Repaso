@@ -51,7 +51,7 @@ class cJugador extends BaseControlador{
             case 'POST':
                 //POSTMAN Body -> form-data
                 //lo primero que tenga los parametros necesarios en el formulario, si no existe alguna ERROR
-                if(!isset($_POST['nombreJugador'])|| !isset($_POST['posicion'])|| !isset($_POST['sueldo']) || !isset($_POST['codEquipo'])){
+                if(!isset($_POST['nombreJugador'])|| !isset($_POST['seleccione'])|| !isset($_POST['sueldo']) || !isset($_POST['codEquipo'])){
                     
                     $this->sendRespuesta(
                         json_encode(array('Error'=>"No se han enviado todos los parametros")),
@@ -59,7 +59,7 @@ class cJugador extends BaseControlador{
                     );
                 }else{
                     //Creamos el objeto jugador con los datos pasados por post
-                    $jugador = new Jugador(0,$_POST['nombreJugador'], $_POST['posicion'], $_POST['sueldo'],$_POST['codEquipo']);
+                    $jugador = new Jugador(0,$_POST['nombreJugador'], $_POST['seleccione'], $_POST['sueldo'],$_POST['codEquipo']);
                     $todoBien = JugadorDAO::save($jugador);
                     //Entra siempre que no haya un error en la BBDD, que no sea nulo
                     if($todoBien){

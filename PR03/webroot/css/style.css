@@ -1,0 +1,47 @@
+header{
+    background-color: rgb(127, 150, 255);
+    text-align: center;
+    font-size: large;
+}
+
+footer{
+    background-color: lightslategray;
+    text-align: center;
+    position: fixed;
+    bottom: 2%;
+    opacity: 70%;
+}
+
+body{
+    margin: 15px;
+    text-align: justify;
+    background-color: lightcyan;
+}
+
+h1{
+    background-color: cadetblue;
+    text-indent: 10px;
+    text-align: center;
+}
+
+h2{
+    background-color: rgb(75, 187, 187);
+    text-indent: 8px;
+    padding: 8px;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a{
+    margin: 25px;
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    color: grey;
+}
